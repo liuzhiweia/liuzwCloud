@@ -1,0 +1,73 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    context-path: /payment-service
+
+spring:
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1 from dual
+        pool-name: HikariCP
+      # 配置默认数据源
+      primary: base
+      datasource:
+        druid:
+          url: jdbc:mysql://localhost:3306/payment?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+          username: root
+          password: NeKf9p3po8eF8oWiWzCvvE6VVuqv7snQtN03PXwWk2StUWbStjjq5eE9BFZB9A5oXelABT1s3kv70e95lTsFPA==
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          initial-size: 3
+          max-active: 20
+          max-wait: 60000
+          validation-query: SELECT 1 FROM DUAL
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          pool-prepared-statements: true
+          min-idle: 3
+          min-evictable-idle-time-millis: 300000
+          time-between-eviction-runs-millis: 60000
+          filter:
+            config:
+              enable: true
+          connect-properties: {config.decrypt: true,config.decrypt.key: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAiJ5As/Jj4iIlSnxdeXzgBf17mpSPsFXHbsRhzgzySC03vYT3F66yTpFW8DlstbbK/tb3/lurL+uB5CS/xlkdBQIDAQABAkAvog2pMAAHXiRmXgoxS4rIS+MGuHmI37+TLUF0mCr5YtcRFCVyADeOnf6NuxE8+sYDrcJzR4AURLqk3DIGa4zBAiEA1ddwLJYcurGSCY5BD2NILpbroH9yD5hfdXfATJQ/1ukCIQCjjVu5yfLWcQot0Had/PMAt45rIpLmXeKBxgLQENn7vQIgf3MLtEczkEHNHEzgkd9GYh4pCVtsC8dw/X4F6p5g/iECIQCZCnRzhGpsiTg6KKBmM8T7vcdRrveBAwcp4izNn4cqjQIgeFsDJL/6fAPrwOFH+sJRWS3BkKuITd566wmm8+D3bkg=
+                                publicKey:MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIieQLPyY+IiJUp8XXl84AX9e5qUj7BVx27EYc4M8kgtN72E9xeusk6RVvA5bLW2yv7W9/5bqy/rgeQkv8ZZHQUCAwEAAQ==}
+
+  redis:
+      # Redis数据库索引（默认为 0）
+      database: 0
+      # Redis服务器地址
+#      host: 192.168.44.89
+      host: 47.106.209.106
+      # Redis服务器连接端口
+      port: 10001
+      # Redis 密码
+      password: 002016LZWlzw
+      lettuce:
+        pool:
+          # 连接池中的最小空闲连接
+          min-idle: 8
+          # 连接池中的最大空闲连接
+          max-idle: 500
+          # 连接池最大连接数（使用负值表示没有限制）
+          max-active: 2000
+          # 连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-wait: 10000
+      # 连接超时时间（毫秒）
+      timeout: 5000
+    #main:
+  #  allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+
+logging:
+  level:
+    com.liuzw: debug
+
