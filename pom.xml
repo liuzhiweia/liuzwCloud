@@ -7,6 +7,9 @@
     <groupId>com.liuzw.springcloud</groupId>
     <artifactId>liuzwCloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>cloud-provider-payment</module>
+    </modules>
     <packaging>pom</packaging>
 
     <!-- 统一jar包版本管理 -->
@@ -19,7 +22,8 @@
         <log4j.version>1.2.17</log4j.version>
         <mysql.version>8.0.18</mysql.version>
         <druid.version>1.1.16</druid.version>
-        <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
+        <fastjson.version>1.2.56</fastjson.version>
+        <mybatis.plus.version>3.3.1</mybatis.plus.version>
     </properties>
 
     <dependencyManagement>
@@ -46,11 +50,21 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- mybatis依赖包 -->
+            <!-- MyBatis增强插件 -->
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>{mybatis.spring.boot.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
             </dependency>
 
             <dependency>
@@ -63,6 +77,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>{druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
             <!-- junit依赖包 -->
