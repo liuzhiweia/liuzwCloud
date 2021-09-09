@@ -9,7 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-provider-payment</artifactId>
+    <artifactId>cloud-provider-sysuser</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -81,6 +86,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
             <version>1.18.12</version>
+        </dependency>
+
+        <!-- 消息队列  rocketMQ -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
         </dependency>
 
         <!-- 自定义通用jar包 -->
